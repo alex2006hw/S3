@@ -62,7 +62,7 @@ describe('objectGet API', () => {
         bucketPut(authInfo, testPutBucketRequest, locationConstraint,
             log, () => {
                 objectPut(authInfo, testPutObjectRequest, undefined,
-                    log, (err, result) => {
+                    log, (err, corsHeaders, result) => {
                         assert.strictEqual(result, correctMD5);
                         objectGet(authInfo, testGetRequest,
                             log, (err, result, responseMetaHeaders) => {
@@ -81,7 +81,7 @@ describe('objectGet API', () => {
         bucketPut(authInfo, testPutBucketRequest, locationConstraint,
             log, () => {
                 objectPut(authInfo, testPutObjectRequest, undefined, log,
-                    (err, result) => {
+                    (err, corsHeaders, result) => {
                         assert.strictEqual(result, correctMD5);
                         objectGet(authInfo, testGetRequest, log,
                             (err, dataGetInfo) => {
@@ -227,7 +227,7 @@ describe('objectGet API', () => {
         bucketPut(authInfo, testPutBucketRequest, locationConstraint,
             log, () => {
                 objectPut(authInfo, testPutObjectRequest, undefined, log,
-                    (err, result) => {
+                    (err, corsHeaders, result) => {
                         assert.strictEqual(result, correctMD5);
                         objectGet(authInfo, testGetRequest,
                         log, (err, result, responseMetaHeaders) => {
