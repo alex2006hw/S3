@@ -90,10 +90,10 @@ describe('MultipleBackend put object', () => {
             });
         });
 
-        it('should put an object to real AWS', done => {
+        it('should put an object to sproxyd', done => {
             const params = { Bucket: bucket, Key: key,
                 Body: 'somestring',
-                Metadata: { 'scal-location-constraint': 'test-region' },
+                Metadata: { 'scal-location-constraint': 'scality-us-east-1' },
             };
             s3.putObject(params, err => {
                 assert.equal(err, null, 'Expected success, ' +
