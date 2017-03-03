@@ -37,7 +37,7 @@ function testAuth(bucketOwner, authUser, bucketPutReq, log, cb) {
             objectPut(authUser, testPutObjectRequest, undefined,
                 log, (err, res) => {
                     assert.strictEqual(err, null);
-                    assert.strictEqual(res, correctMD5);
+                    assert.strictEqual(res.contentMD5, correctMD5);
                     cb();
                 });
         });
@@ -114,7 +114,7 @@ describe('objectPut API', () => {
             log, () => {
                 objectPut(authInfo, testPutObjectRequest, undefined, log,
                     (err, result) => {
-                        assert.strictEqual(result, correctMD5);
+                        assert.strictEqual(result.contentMD5, correctMD5);
                         metadata.getObjectMD(bucketName, objectName,
                             {}, log, (err, md) => {
                                 assert(md);
@@ -149,7 +149,7 @@ describe('objectPut API', () => {
             log, () => {
                 objectPut(authInfo, testPutObjectRequest, undefined, log,
                     (err, result) => {
-                        assert.strictEqual(result, correctMD5);
+                        assert.strictEqual(result.contentMD5, correctMD5);
                         metadata.getObjectMD(bucketName, objectName, {}, log,
                             (err, md) => {
                                 assert(md);
@@ -187,7 +187,7 @@ describe('objectPut API', () => {
             log, () => {
                 objectPut(authInfo, testPutObjectRequest, undefined, log,
                     (err, result) => {
-                        assert.strictEqual(result, correctMD5);
+                        assert.strictEqual(result.contentMD5, correctMD5);
                         assert.deepStrictEqual(ds, []);
                         metadata.getObjectMD(bucketName, objectName, {}, log,
                             (err, md) => {
