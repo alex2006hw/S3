@@ -67,9 +67,10 @@ describe('Multiple backend get object', () => {
                         Metadata: { 'scal-location-constraint': 'file' } });
                 })
                 .then(() => {
-                    process.stdout.write('Putting object to AWS');
+                    process.stdout.write('Putting object to sproxyd');
                     return s3.putObjectAsync({ Bucket: bucket, Key: awsObject,
-                        Metadata: { 'scal-location-constraint': 'test-region' },
+                        Metadata: { 'scal-location-constraint':
+                            'scality-us-east-1' },
                     });
                 })
                 .catch(err => {
@@ -91,7 +92,7 @@ describe('Multiple backend get object', () => {
                 });
                 done();
             });
-            it('should get an object from AWS', done => {
+            it('should get an object from sproxyd', done => {
                 s3.getObject({ Bucket: bucket, Key: awsObject }, err => {
                     assert.equal(err, null, 'Expected success but got error ' +
                         `${err}`);

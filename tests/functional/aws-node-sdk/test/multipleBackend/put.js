@@ -54,52 +54,61 @@ describe('MultipleBackend put object', () => {
                 });
             });
 
-        it('should return an error to put request without a valid ' +
-            'location constraint', done => {
-            const params = { Bucket: bucket, Key: key,
-                Body: 'somestring',
-                Metadata: { 'scal-location-constraint': 'fail-region' } };
-            s3.putObject(params, err => {
-                assert.notEqual(err, null, 'Expected failure but got success');
-                assert.strictEqual(err.code, 'InvalidArgument');
-                done();
+        describe('with set location from "x-amz-meta-scal-' +
+            'location-constraint" header', () => {
+            it('should return an error to put request without a valid ' +
+                'location constraint', done => {
+                const params = { Bucket: bucket, Key: key,
+                    Body: 'somestring',
+                    Metadata: { 'scal-location-constraint': 'fail-region' } };
+                s3.putObject(params, err => {
+                    assert.notEqual(err, null, 'Expected failure but got ' +
+                        'success');
+                    assert.strictEqual(err.code, 'InvalidArgument');
+                    done();
+                });
             });
-        });
 
-        it('should put an object to mem', done => {
-            const params = { Bucket: bucket, Key: key,
-                Body: 'somestring',
-                Metadata: { 'scal-location-constraint': 'mem' },
-            };
-            s3.putObject(params, err => {
-                assert.equal(err, null, 'Expected success, ' +
-                    `got error ${JSON.stringify(err)}`);
-                done();
+            it('should put an object to mem', done => {
+                const params = { Bucket: bucket, Key: key,
+                    Body: 'somestring',
+                    Metadata: { 'scal-location-constraint': 'mem' },
+                };
+                s3.putObject(params, err => {
+                    assert.equal(err, null, 'Expected success, ' +
+                        `got error ${JSON.stringify(err)}`);
+                    done();
+                });
             });
-        });
 
-        it('should put an object to file', done => {
-            const params = { Bucket: bucket, Key: key,
-                Body: 'somestring',
-                Metadata: { 'scal-location-constraint': 'file' },
-            };
-            s3.putObject(params, err => {
-                assert.equal(err, null, 'Expected success, ' +
-                    `got error ${JSON.stringify(err)}`);
-                done();
+            it('should put an object to file', done => {
+                const params = { Bucket: bucket, Key: key,
+                    Body: 'somestring',
+                    Metadata: { 'scal-location-constraint': 'file' },
+                };
+                s3.putObject(params, err => {
+                    assert.equal(err, null, 'Expected success, ' +
+                        `got error ${JSON.stringify(err)}`);
+                    done();
+                });
             });
-        });
 
-        it('should put an object to sproxyd', done => {
-            const params = { Bucket: bucket, Key: key,
-                Body: 'somestring',
-                Metadata: { 'scal-location-constraint': 'scality-us-east-1' },
-            };
-            s3.putObject(params, err => {
-                assert.equal(err, null, 'Expected success, ' +
-                    `got error ${JSON.stringify(err)}`);
-                done();
+            it('should put an object to sproxyd', done => {
+                const params = { Bucket: bucket, Key: key,
+                    Body: 'somestring',
+                    Metadata: { 'scal-location-constraint':
+                        'scality-us-east-1' },
+                };
+                s3.putObject(params, err => {
+                    assert.equal(err, null, 'Expected success, ' +
+                        `got error ${JSON.stringify(err)}`);
+                    done();
+                });
             });
         });
     });
 });
+
+// sub describe based on bucket location
+
+// sub describe for buckets with no location -- so based on endpoint

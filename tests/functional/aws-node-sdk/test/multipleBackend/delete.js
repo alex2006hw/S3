@@ -34,9 +34,10 @@ describe('Multiple backend delete', () => {
                 return s3.putObject(params);
             })
             .then(() => {
-                process.stdout.write('Putting object to AWS\n');
+                process.stdout.write('Putting object to sproxyd\n');
                 const params = { Bucket: bucket, Key: awsObject,
-                    Metadata: { 'scal-location-constraint': 'test-region' } };
+                    Metadata: { 'scal-location-constraint':
+                        'scality-us-east-1' } };
                 return s3.putObject(params);
             })
             .catch(err => {
@@ -67,7 +68,7 @@ describe('Multiple backend delete', () => {
             });
             done();
         });
-        it('should delete object from AWS', done => {
+        it('should delete object from sproxyd', done => {
             s3.deleteObject({ Bucket: bucket, Key: awsObject }, err => {
                 assert.strictEqual(err, null,
                     `Expected success, got error ${JSON.stringify(err)}`);
