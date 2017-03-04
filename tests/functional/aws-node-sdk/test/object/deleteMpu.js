@@ -11,7 +11,7 @@ const itSkipIfAWS = process.env.AWS_ON_AIR ? it.skip : it;
 
 const westLocation = config.locationConstraints ? 'scality-us-west-1'
 : 'us-west-1';
-const eastLocation = config.locationConstraints ? 'aws-us-east-1' : 'us-east-1';
+const eastLocation = 'us-east-1';
 const describeSkipIfOldConfig = config.locationConstraints ? describe :
 describe.skip;
 
