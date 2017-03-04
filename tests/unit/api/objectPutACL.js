@@ -9,7 +9,7 @@ import { cleanup,
     AccessControlPolicy,
 } from '../helpers';
 import metadata from '../metadataswitch';
-import objectPut from '../../../lib/api/objectPut';
+import { objectPut } from '../../../lib/api/objectPut';
 import objectPutACL from '../../../lib/api/objectPutACL';
 import DummyRequest from '../DummyRequest';
 import config from '../../../lib/Config';

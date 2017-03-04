@@ -7,7 +7,7 @@ import { parseString } from 'xml2js';
 import bucketPut from '../../../lib/api/bucketPut';
 import constants from '../../../constants';
 import { cleanup, DummyRequestLogger, makeAuthInfo } from '../helpers';
-import objectPut from '../../../lib/api/objectPut';
+import { objectPut } from '../../../lib/api/objectPut';
 import objectGetACL from '../../../lib/api/objectGetACL';
 import DummyRequest from '../DummyRequest';
 import config from '../../../lib/Config';

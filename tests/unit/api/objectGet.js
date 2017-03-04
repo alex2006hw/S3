@@ -8,7 +8,7 @@ import { cleanup, DummyRequestLogger, makeAuthInfo } from '../helpers';
 import completeMultipartUpload from '../../../lib/api/completeMultipartUpload';
 import DummyRequest from '../DummyRequest';
 import initiateMultipartUpload from '../../../lib/api/initiateMultipartUpload';
-import objectPut from '../../../lib/api/objectPut';
+import { objectPut } from '../../../lib/api/objectPut';
 import objectGet from '../../../lib/api/objectGet';
 import objectPutPart from '../../../lib/api/objectPutPart';
 import config from '../../../lib/Config';

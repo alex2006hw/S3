@@ -7,7 +7,7 @@ import { metadata } from '../../../lib/metadata/in_memory/metadata';
 import { ds } from '../../../lib/data/in_memory/backend';
 import DummyRequest from '../DummyRequest';
 import bucketPut from '../../../lib/api/bucketPut';
-import objectPut from '../../../lib/api/objectPut';
+import { objectPut } from '../../../lib/api/objectPut';
 import config from '../../../lib/Config';
 
 const log = new DummyRequestLogger();

@@ -6,7 +6,7 @@ import bucketPutACL from '../../../lib/api/bucketPutACL';
 import { cleanup, DummyRequestLogger, makeAuthInfo } from '../helpers';
 import { ds } from '../../../lib/data/in_memory/backend';
 import metadata from '../metadataswitch';
-import objectPut from '../../../lib/api/objectPut';
+import { objectPut } from '../../../lib/api/objectPut';
 import DummyRequest from '../DummyRequest';
 import config from '../../../lib/Config';
 
